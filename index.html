@@ -1,3 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
 
-test
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pixiv artwork:</title>
+</head>
 
+<body>
+    <script>
+        const params = new URLSearchParams(window.location.search)
+        const pid = params.get('artwork')
+        const total = params.get('total')
+        const limit = params.get('limit')
+        document.title=document.title+pid
+        var fav = document.createElement('link');
+        fav.setAttribute('rel', `shortcut icon`)
+        fav.setAttribute('href', `./pap.ico`)
+        document.getElementsByTagName('head')[0].appendChild(fav);
+
+        var fav = document.createElement('meta');
+        fav.setAttribute('name', `referrer`)
+        fav.setAttribute('content', `no-referrer`)
+        document.getElementsByTagName('head')[0].appendChild(fav);
+
+        
+        if (limit == 'all')
+            var nums = [1, total]
+        else if (limit.indexOf('-') != -1)
+            var nums = limit.split('-');
+        else
+            var nums = [limit, limit];
+
+        var h1 = document.querySelector('h1');
+        var body = document.querySelector('body');
+        for (var i = nums[0]; i <= nums[1]; i++) {
+            var div = document.createElement('div');
+            var pic = document.createElement('img');
+            var u = document.createElement('a');
+            if (total == '1')
+                var reurl = `https://pixiv.re/${pid}.png`;
+            else
+                var reurl = `https://pixiv.re/${pid}-${i}.png`;
+            var url = document.createTextNode(reurl);
+            u.setAttribute('href', reurl)
+            pic.setAttribute('src', reurl)
+            u.appendChild(url);
+            pic.style.width = '100%'
+            u.style.fontSize = '28pt'
+            var ind = document.createElement('h1');
+            ind.textContent = `p${i}`
+            div.appendChild(ind)
+            div.appendChild(pic)
+            div.appendChild(u)
+            div.style.width = '80%'
+            div.style.margin = "0 auto"
+            div.style.marginBottom = "50pt"
+            body.appendChild(div)
+        }
+    </script>
+</body>
+
+</html>
