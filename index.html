@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -14,7 +15,20 @@
         const pid = params.get('artwork')
         const total = params.get('total')
         const limit = params.get('limit')
-        document.title=document.title+pid
+        document.title = document.title + ` ${pid}`
+        var div_top = document.createElement('div');
+        div_top.style.width = '80%'
+        div_top.style.margin = "0 auto"
+        div_top.style.marginBottom = "50pt"
+
+        var pid_h = document.createElement('h1');
+        var des = document.createElement('h1');
+        pid_h.innerText = `Pixiv artwork ${pid} \n 请求共${limit}p`
+        des.innerText = `原画original画质 可直接长按保存`
+        div_top.style.fontSize = '2vw'
+        div_top.appendChild(pid_h)
+        div_top.appendChild(des)
+
         var fav = document.createElement('link');
         fav.setAttribute('rel', `shortcut icon`)
         fav.setAttribute('href', `./pap.ico`)
@@ -25,7 +39,7 @@
         fav.setAttribute('content', `no-referrer`)
         document.getElementsByTagName('head')[0].appendChild(fav);
 
-        
+
         if (limit == 'all')
             var nums = [1, total]
         else if (limit.indexOf('-') != -1)
@@ -35,6 +49,8 @@
 
         var h1 = document.querySelector('h1');
         var body = document.querySelector('body');
+        body.appendChild(div_top)
+
         for (var i = nums[0]; i <= nums[1]; i++) {
             var div = document.createElement('div');
             var pic = document.createElement('img');
@@ -44,12 +60,14 @@
             else
                 var reurl = `https://pixiv.re/${pid}-${i}.png`;
             var url = document.createTextNode(reurl);
+
             u.setAttribute('href', reurl)
+            u.style.fontSize = '3.6vw'
             pic.setAttribute('src', reurl)
             u.appendChild(url);
             pic.style.width = '100%'
-            u.style.fontSize = '28pt'
             var ind = document.createElement('h1');
+            ind.style.fontSize = '5vw'
             ind.textContent = `p${i}`
             div.appendChild(ind)
             div.appendChild(pic)
