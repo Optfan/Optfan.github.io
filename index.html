@@ -77,8 +77,10 @@
         }
     }
     function QQopenINbrowser() {
-        openu("googlechrome://browse?url="+window.location.href);
-        mqq.ui.openUrl({ target: 2, url: window.location.href });
+        var ope = document.createElement("a");
+        ope.href = "googlechrome://browse?url=" + window.location.href;
+        ope.click();
+
     }
 
     function getBase64ByURL(imgUrl) {
