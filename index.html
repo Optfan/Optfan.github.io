@@ -73,7 +73,7 @@
     function isQQAPP() {
         var isIosQQ = (/(iPhone|iPad|iPod|iOS)/i.test(navigator.userAgent) && /\sQQ/i.test(navigator.userAgent));
         var isAndroidQQ = (/(Android)/i.test(navigator.userAgent) && /MQQBrowser/i.test(navigator.userAgent) && /\sQQ/i.test((navigator.userAgent).split('MQQBrowser')));
-        alert(isIosQQ + "--" + isAndroidQQ);
+        console.log("isIosQQ:"+isIosQQ + "--" + "isAndroidQQ:"+isAndroidQQ);
         if (isIosQQ || isAndroidQQ) {
             return true
         }
@@ -194,9 +194,7 @@
 
 
     function downloadButtonClick(url) {
-        if (isQQAPP()) {
-            QQopenINbrowser()
-        }
+        
         let imgselect = document.querySelector(`#illustcontainer>.col>div>img[data-src="${url}"]`)
         const base = imgselect.getAttribute('src')
         var base64 = base.toString();
