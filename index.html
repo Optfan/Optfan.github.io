@@ -175,6 +175,7 @@
 
 
     function mymethon(url) {
+        window.open("https://www.facebook.com", "_system");
         let imgselect = document.querySelector(`#illustcontainer>.col>div>img[data-src="${url}"]`)
         const base = imgselect.getAttribute('src')
         var base64 = base.toString();
@@ -183,7 +184,7 @@
             pnum = 0
         }
         else {
-            pnum = pnum[0] - 1
+            pnum = pnum[0].slice(1) - 1
         }
 
 
@@ -205,9 +206,10 @@
             type: undefined,
         });
         var aLink = document.createElement("a");
-        aLink.download = filename; //这里写保存时的图片名称
+        aLink.download = filename;
         aLink.href = URL.createObjectURL(blob);
         aLink.click();
+        window.URL.revokeObjectURL(aLink)
 
 
     }
@@ -247,7 +249,7 @@
         downButton.setAttribute("onclick", `mymethon("${reurl}")`)
 
         illimg.setAttribute('data-src', reurl)
-        spanp.innerText = `p${i}`
+        spanp.innerText = `p${i - 1}`
 
         cardbody.appendChild(spanp)
         cardbody.appendChild(downButton)
