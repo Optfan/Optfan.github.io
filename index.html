@@ -7,77 +7,389 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pixiv artwork:</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://getbootstrap.com/docs/5.2/assets/css/docs.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="shortcut icon" href="./pap.ico">
 </head>
 
 <body>
-    <script>
-        const params = new URLSearchParams(window.location.search)
-        const pid = params.get('artwork')
-        const total = params.get('total')
-        const limit = params.get('limit')
-        document.title = document.title + ` ${pid}`
-        var div_top = document.createElement('div');
-        div_top.style.width = '80%'
-        div_top.style.margin = "0 auto"
-        div_top.style.marginBottom = "50pt"
+    <header>
+        <nav class="navbar navbar-light bg-light fixed-top">
+            <div class="container-fluid">
 
-        var pid_h = document.createElement('h1');
-        var des = document.createElement('h1');
-        pid_h.innerText = `Pixiv artwork ${pid} \n 请求共${limit}p`
-        des.innerText = `原画original画质 可直接长按保存`
-        div_top.style.fontSize = '2vw'
-        div_top.appendChild(pid_h)
-        div_top.appendChild(des)
+                <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas"
+                    data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <a id="id_header" class="navbar-brand" href="#">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="116" height="26" viewBox="0 0 116 46">
+                        <path fill="#81FA00"
+                            d="M33.463 15.125c-2.963-2.588-7.113-4.08-11.936-4.08-12.57 0-21.12 9.694-21.12 9.694l2.41 3.82s1.332.11.626-2.14c.61-1.15 1.802-2.7 4.13-4.487V43.39c-1.003.283-2.33.816-1.425 1.72h6.92c.915-.913-.525-1.462-1.402-1.72v-6.004s4.746 1.86 9.86 1.86c4.496 0 8.585-1.336 11.627-3.75 3.042-2.4 5.002-5.983 4.99-10.08a13.504 13.504 0 00-4.68-10.29zm-3.668 18.363c-2.103 2.075-5.162 3.388-8.69 3.385-3.937.002-7.25-.76-9.438-1.836v-19.1c2.4-1.704 6.294-2.754 9.438-2.748 3.82 0 6.82 1.443 8.848 3.632 2.025 2.203 3.13 5.128 3.14 8.53-.013 3.313-1.195 6.042-3.298 8.135zm14.47-22.444h-1.41c-.625 0-1.132.507-1.132 1.133v26.035c0 .626.507 1.134 1.133 1.134h1.41c.624 0 1.133-.508 1.133-1.134V12.177a1.137 1.137 0 00-1.136-1.133zm36.84 0h-1.41c-.626 0-1.133.507-1.133 1.133v26.035c0 .626.507 1.134 1.133 1.134h1.41c.624 0 1.132-.508 1.132-1.134V12.177c0-.626-.508-1.133-1.133-1.133zm33.14 0h-1.312c-1.03 0-1.315.133-1.78 1.063-.462.925-10.67 21.154-10.67 21.154S90.275 13.034 89.813 12.11c-.463-.93-.747-1.063-1.778-1.063h-1.31c-.967 0-1.487.43-.944 1.52.547 1.093 13.12 25.772 13.12 25.772.33.625.933 1.01 1.586 1.01.65 0 1.255-.385 1.587-1.01.02-.045 12.57-24.68 13.113-25.77.544-1.093.025-1.522-.94-1.522zM69.972 38.398c.53.68.914.947 1.944.947h2.113c1.33 0 .86-.605.485-1.102-.94-1.238-10.204-13.016-10.204-13.016s9.6-11.847 10.54-13.085c.376-.495.844-1.1-.487-1.1h-2.11c-1.032 0-1.415.267-1.946.946-.532.678-8.332 10.268-8.332 10.268s-7.806-9.59-8.338-10.268c-.532-.68-.915-.946-1.944-.946H49.58c-1.33 0-.862.604-.486 1.1.94 1.24 10.543 13.085 10.543 13.085s-9.543 11.777-10.484 13.016c-.375.496-.844 1.102.486 1.102h2.11c1.03 0 1.414-.27 1.946-.947.532-.678 8.277-10.202 8.277-10.202l8 10.202zM43.556.11c-.84 0-1.54.282-2.1.84-.56.56-.84 1.26-.84 2.102 0 .84.28 1.54.84 2.1.56.56 1.26.84 2.1.84.84 0 1.54-.28 2.1-.84.56-.56.84-1.26.84-2.1 0-.84-.28-1.54-.84-2.1-.56-.56-1.26-.84-2.1-.84zm36.84 0c-.84 0-1.54.282-2.1.84-.562.56-.84 1.26-.84 2.102 0 .84.278 1.54.84 2.1.56.56 1.26.84 2.1.84.84 0 1.54-.28 2.1-.84s.84-1.26.84-2.1c0-.84-.278-1.54-.84-2.1-.56-.56-1.26-.84-2.1-.84z" />
+                    </svg>
+                </a>
+                <a class="navbar-brand" href="#"></a>
+                <div class="offcanvas offcanvas-start text-bg-light" tabindex="-1" id="offcanvasNavbar"
+                    aria-labelledby="offcanvasLightNavbarLabel">
+                    <div class="offcanvas-header">
+                        <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Pixiv artwork</h5>
+                        <button type="button" class="btn-close btn-close-black" data-bs-dismiss="offcanvas"
+                            aria-label="Close"></button>
+                    </div>
+                    <div class="offcanvas-body">
+                        <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="#">无后端Pixiv插画展示</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Link</a>
+                            </li>
 
-        var fav = document.createElement('link');
-        fav.setAttribute('rel', `shortcut icon`)
-        fav.setAttribute('href', `./pap.ico`)
-        document.getElementsByTagName('head')[0].appendChild(fav);
+                        </ul>
 
-        var fav = document.createElement('meta');
-        fav.setAttribute('name', `referrer`)
-        fav.setAttribute('content', `no-referrer`)
-        document.getElementsByTagName('head')[0].appendChild(fav);
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <div class="container">
+        <div id="" style="margin-top:20px"></div>
+        <div id="illustcontainer" class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-xxl-5 g-3">
 
 
-        if (limit == 'all')
-            var nums = [1, total]
-        else if (limit.indexOf('-') != -1)
-            var nums = limit.split('-');
-        else
-            var nums = [limit, limit];
 
-        var h1 = document.querySelector('h1');
-        var body = document.querySelector('body');
-        body.appendChild(div_top)
 
-        for (var i = nums[0]; i <= nums[1]; i++) {
-            var div = document.createElement('div');
-            var pic = document.createElement('img');
-            var u = document.createElement('a');
-            if (total == '1')
-                var reurl = `https://pixiv.re/${pid}.png`;
-            else
-                var reurl = `https://pixiv.re/${pid}-${i}.png`;
-            var url = document.createTextNode(reurl);
+        </div>
+    </div>
 
-            u.setAttribute('href', reurl)
-            u.style.fontSize = '3.6vw'
-            pic.setAttribute('src', reurl)
-            u.appendChild(url);
-            pic.style.width = '100%'
-            var ind = document.createElement('h1');
-            ind.style.fontSize = '5vw'
-            ind.textContent = `p${i}`
-            div.appendChild(ind)
-            div.appendChild(pic)
-            div.appendChild(u)
-            div.style.width = '80%'
-            div.style.margin = "0 auto"
-            div.style.marginBottom = "50pt"
-            body.appendChild(div)
-        }
-    </script>
 </body>
+<script>
+
+    function getBase64ByURL(imgUrl) {
+        return new Promise(resolve => {
+            window.URL = window.URL || window.webkitURL;
+            var xhr = new XMLHttpRequest();
+            xhr.open("get", imgUrl, true);
+            xhr.responseType = "blob";
+            xhr.onload = function () {
+                if (this.status == 200) {
+                    var blob = this.response;
+                    let oFileReader = new FileReader();
+                    oFileReader.onloadend = function (e) {
+                        resolve({ blob, base64: e.target.result })
+                    };
+                    oFileReader.readAsDataURL(blob);
+                }
+            };
+            xhr.send();
+        });
+    };
+    // 调用
+
+
+    // 图片加载器 Promise
+    function iloader(imgUrl) {
+        return new Promise(resolve => {
+            let image = new Image()
+            window.URL = window.URL || window.webkitURL;
+            var xhr = new XMLHttpRequest();
+            xhr.open("get", imgUrl, true);
+            xhr.responseType = "blob";
+            xhr.onload = function () {
+                if (this.status == 200) {
+                    var blob = this.response;
+                    let oFileReader = new FileReader();
+                    oFileReader.onloadend = function (e) {
+                        resolve({ blob, base64: e.target.result })
+                    };
+                    oFileReader.readAsDataURL(blob);
+                }
+            };
+            xhr.send();
+        });
+    }
+
+    document.addEventListener('DOMContentLoaded', function () {
+        let io = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.intersectionRatio > 0) {
+                    let wrap = entry.target;
+                    let src = wrap.dataset.src;
+
+                    iloader(src).then(data => {
+                        let { blob, base64 } = data
+                        console.log("finish " + src);
+                        wrap.outerHTML = `<img src='${base64}' class='show' data-src='${src}'>`;
+                        let button = document.querySelector(`#illustcontainer>.col>div>img[data-src="${src}"]+div>button`)
+                        button.disabled = false
+                    });
+                    io.unobserve(wrap);
+
+                }
+            });
+
+        });
+
+        document.querySelectorAll('img.lazy[data-src]').forEach(function (img) {
+            let src = img.dataset.src;
+            img.outerHTML = `<div class='lazyImg-wrap' data-src='${src}'>
+                <div class="placeholder-glow" style="height:360px;width:100%">
+                    <span>
+                        <span class="placeholder col-12" style="height:100%;width:100%"></span>
+
+                    </span>
+                  </div>
+            </div>`;
+        });
+        document.querySelectorAll('.lazyImg-wrap').forEach(function (wrap) {
+            io.observe(wrap);
+        });
+    });
+    console.clear();
+
+
+    const params = new URLSearchParams(window.location.search)
+
+    const pid = params.get('artwork')
+    const total = params.get('total')
+    const limit = params.get('limit')
+
+    document.title = document.title + ` ${pid}`
+    var div_top = document.createElement('div');
+    div_top.style.width = '80%'
+    div_top.style.margin = "0 auto"
+    div_top.style.marginBottom = "50pt"
+
+
+
+
+    if (limit == 'all')
+        var nums = [1, total]
+    else if (limit.indexOf('-') != -1)
+        var nums = limit.split('-');
+    else
+        var nums = [limit, limit];
+
+    let dlinkli = []
+
+
+    function mymethon(url) {
+        let imgselect = document.querySelector(`#illustcontainer>.col>div>img[data-src="${url}"]`)
+        const base = imgselect.getAttribute('src')
+        var base64 = base.toString();
+        let pnum = url.match(/-\d+/)
+        if (pnum == null) {
+            pnum = 0
+        }
+        else {
+            pnum = pnum[0] - 1
+        }
+
+
+        var imgtype = base64.slice(0, 20).match(/(png|jpeg|jpg|gif|webp)/)[0]
+        if (imgtype == 'jpeg') {
+            imgtype = 'jpg'
+        }
+        var filename = url.match(/\d+/)[0] + `_p${pnum}.${imgtype}`
+
+        var byteCharacters = atob(
+            base64.replace(/^data:image\/(png|jpeg|jpg|gif|webp);base64,/, "")
+        );
+        var byteNumbers = new Array(byteCharacters.length);
+        for (var i = 0; i < byteCharacters.length; i++) {
+            byteNumbers[i] = byteCharacters.charCodeAt(i);
+        }
+        var byteArray = new Uint8Array(byteNumbers);
+        var blob = new Blob([byteArray], {
+            type: undefined,
+        });
+        var aLink = document.createElement("a");
+        aLink.download = filename; //这里写保存时的图片名称
+        aLink.href = URL.createObjectURL(blob);
+        aLink.click();
+
+
+    }
+
+
+    const illustcontainer = document.getElementById("illustcontainer")
+
+    for (var i = nums[0]; i <= nums[1]; i++) {
+
+
+
+        let illust = document.createElement('div');
+        illust.className = "col"
+
+        let card = document.createElement('div');
+        card.className = "card shadow-sm"
+
+        let illimg = document.createElement('img');
+        illimg.className = "lazy"
+
+        let cardbody = document.createElement('div');
+        cardbody.className = "card-body"
+
+        let spanp = document.createElement('span');
+        spanp.className = "badge rounded-pill text-bg-light float-start"
+
+        let downButton = document.createElement('button');
+        downButton.className = "btn btn-outline-secondary float-end"
+        downButton.disabled = true
+        downButton.innerText = '保存到本地'
+
+        if (total == '1')
+            var reurl = `https://pixiv.re/${pid}.png`;
+        else
+            var reurl = `https://pixiv.re/${pid}-${i}.png`;
+
+        downButton.setAttribute("onclick", `mymethon("${reurl}")`)
+
+        illimg.setAttribute('data-src', reurl)
+        spanp.innerText = `p${i}`
+
+        cardbody.appendChild(spanp)
+        cardbody.appendChild(downButton)
+
+        card.appendChild(illimg)
+        card.appendChild(cardbody)
+
+        illust.appendChild(card)
+        illustcontainer.append(illust)
+    }
+
+
+</script>
+<style>
+    img,
+    .lazyImg-wrap {
+        display: block;
+
+
+        border: 0;
+        background-color: #F1F1FA;
+    }
+
+    img.show {
+        opacity: 0;
+        animation: img-show 1s ease forwards;
+    }
+
+    @keyframes img-show {
+        to {
+            opacity: 1
+        }
+    }
+
+    .lazyImg-wrap {
+
+        align-items: center;
+        justify-content: center;
+    }
+
+    .lazyImg-loader {
+        position: relative;
+
+        border: 6px solid #333;
+        border-radius: 50%;
+        animation: loader-spin 1.5s ease infinite;
+    }
+
+    .lazyImg-loader::after {
+        content: '';
+        position: absolute;
+        left: calc(50% - 6px);
+        top: -7px;
+        display: block;
+        width: 12px;
+        height: 12px;
+        background-color: #F1F1FA;
+    }
+
+    @keyframes loader-spin {
+        to {
+            transform: rotate(359deg);
+        }
+    }
+
+
+
+
+
+
+    .bg-light {
+        --bs-bg-opacity: 1;
+        background-color: rgba(255, 255, 255, var(--bs-bg-opacity)) !important;
+    }
+
+    header {
+        height: 48px;
+    }
+
+    #offcanvasNavbar {
+        --bs-offcanvas-width: 60%;
+    }
+
+    .navbar {
+        --bs-navbar-padding-y: 0;
+    }
+
+    .navbar-brand {
+        padding-top: 0;
+        padding-bottom: 0;
+    }
+
+    .container-fluid {
+        height: 48px;
+        padding: 0;
+        border-bottom: 1px solid rgba(173, 173, 173, 0.3);
+    }
+
+    .navbar-toggler-icon {
+        height: 20px;
+        width: 20px;
+    }
+
+    .navbar-toggler {
+        border: 0;
+        margin-left: 5px;
+    }
+
+    .card {
+        overflow: hidden;
+    }
+
+    .card-text {
+        font-size: 18px;
+
+    }
+
+    @media screen and (orientation: portrait) {
+
+        /*竖屏 css*/
+        h1,
+        a {
+            font-size: 0.15rem;
+        }
+
+
+    }
+
+    @media screen and (orientation: landscape) {
+
+        /*横屏 css*/
+
+
+        h1,
+        a {
+            font-size: 0.05rem;
+        }
+
+        #offcanvasNavbar {
+            --bs-offcanvas-width: 20%;
+        }
+    }
+</style>
 
 </html>
