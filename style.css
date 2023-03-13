@@ -1,0 +1,128 @@
+img,
+.lazyImg-wrap {
+    display: block;
+
+
+    border: 0;
+    background-color: #F1F1FA;
+}
+
+img.show {
+    opacity: 0;
+    animation: img-show 1s ease forwards;
+}
+
+@keyframes img-show {
+    to {
+        opacity: 1
+    }
+}
+
+.lazyImg-wrap {
+
+    align-items: center;
+    justify-content: center;
+}
+
+.lazyImg-loader {
+    position: relative;
+
+    border: 6px solid #333;
+    border-radius: 50%;
+    animation: loader-spin 1.5s ease infinite;
+}
+
+.lazyImg-loader::after {
+    content: '';
+    position: absolute;
+    left: calc(50% - 6px);
+    top: -7px;
+    display: block;
+    width: 12px;
+    height: 12px;
+    background-color: #F1F1FA;
+}
+
+@keyframes loader-spin {
+    to {
+        transform: rotate(359deg);
+    }
+}
+
+
+
+
+
+
+.bg-light {
+    --bs-bg-opacity: 1;
+    background-color: rgba(255, 255, 255, var(--bs-bg-opacity)) !important;
+}
+
+header {
+    height: 48px;
+}
+
+#offcanvasNavbar {
+    --bs-offcanvas-width: 60%;
+}
+
+.navbar {
+    --bs-navbar-padding-y: 0;
+}
+
+.navbar-brand {
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+.container-fluid {
+    height: 48px;
+    padding: 0;
+    border-bottom: 1px solid rgba(173, 173, 173, 0.3);
+}
+
+.navbar-toggler-icon {
+    height: 20px;
+    width: 20px;
+}
+
+.navbar-toggler {
+    border: 0;
+    margin-left: 5px;
+}
+
+.card {
+    overflow: hidden;
+}
+
+.card-text {
+    font-size: 18px;
+
+}
+
+@media screen and (orientation: portrait) {
+
+    /*竖屏 css*/
+    h1,
+    a {
+        font-size: 0.15rem;
+    }
+
+
+}
+
+@media screen and (orientation: landscape) {
+
+    /*横屏 css*/
+
+
+    h1,
+    a {
+        font-size: 0.05rem;
+    }
+
+    #offcanvasNavbar {
+        --bs-offcanvas-width: 20%;
+    }
+}
