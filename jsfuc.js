@@ -81,6 +81,7 @@ function ListenPICshow() {
 
 function iloader(imgUrl) {
     var id = imgUrl.match(/\d+/)
+    let pagenum = imgUrl.match(/-\d+/)
 
     return new Promise((resolve, reject) => {
         window.URL = window.URL || window.webkitURL;
@@ -107,10 +108,10 @@ function iloader(imgUrl) {
                 let progress = event.loaded / event.total * 100;
                 //console.log(`${id}加载进度: ${progress}%`)
                 let progress_div = document.querySelector(`.lazyImg-wrap[data-src="${imgUrl}"] > div >div> div`)
-                
+
                 progress_div.style = `width:${progress}%`
-                
-                if (progress> 80) {
+
+                if (progress > 80) {
                     progress_div.style = `width:100%`
                 }
 
@@ -122,7 +123,7 @@ function iloader(imgUrl) {
             //console.log(xhr.readyState)
 
             if (this.readyState === this.DONE) {
-                if (this.responseURL == '') {
+                if (this.responseURL == '' && pagenum == null) {
                     console.log("301失败")
                     this.abort()
                     let rexhr = new XMLHttpRequest();
@@ -130,7 +131,7 @@ function iloader(imgUrl) {
                     rexhr.responseType = "blob";
                     rexhr.addEventListener("progress", updateProgress);
                     rexhr.onload = function () {
-                        
+
                         if (this.status == 200) {
 
                             var blob = this.response;
