@@ -126,3 +126,7 @@ header {
         --bs-offcanvas-width: 20%;
     }
 }
+
+.pixiv-green {
+    background-color: rgb(150, 225, 0);
+}
