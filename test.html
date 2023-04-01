@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function tt() {
+            let tt = document.querySelector('#test')
+            tt.style.display = 'none'
+
+        }
+    </script>
+</head>
+
+<body>
+    <div id="plugin-canvas">
+        <button class="plugin-button-white" onclick="tt()">
+            隐藏已收藏作品
+        </button>
+        <button class="plugin-button-blue" onclick="">
+            隐藏已收藏作品
+        </button>
+
+    </div>
+</body>
+<style>
+    #test {
+        display: block;
+        transition: display 1s;
+    }
+
+    #plugin-canvas {
+        position: fixed;
+        background-color: #ffffff;
+        right: 0;
+        top: 30%;
+        height: 300px;
+        border-radius: 10px;
+        border-left: solid 2px rgb(162, 218, 255)
+    }
+
+    .plugin-button-blue {
+        display: block;
+        color: rgb(255, 255, 255);
+        background-color: rgb(0, 150, 250);
+        font-size: 14px;
+        font-weight: bold;
+        margin: 16px;
+        padding-left: 20px;
+        padding-right: 20px;
+
+        height: 42px;
+        border: none;
+        border-radius: 100000px;
+        transition: background-color 0.6s;
+    }
+    .plugin-button-white {
+        display: block;
+        color: rgb(71,71,71);
+        background-color: rgb(245,245,245);
+        font-size: 14px;
+        font-weight: bold;
+        margin: 16px;
+        padding-left: 20px;
+        padding-right: 20px;
+
+        height: 42px;
+        border: none;
+        border-radius: 100000px;
+        transition: background-color 0.6s;
+    }
+
+    .plugin-button-blue:hover {
+        background-color: rgb(0,114,240);
+        cursor: pointer;
+    }
+    .plugin-button-white:hover {
+        background-color: rgb(235,235,235);
+        cursor: pointer;
+    }
+</style>
+
+</html>
