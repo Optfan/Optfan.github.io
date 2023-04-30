@@ -197,10 +197,29 @@ test_jsonp()
 
 */
 
-function amplifyButtonClick(url){
+function amplifyButtonClick(url) {
     let imgselect = document.querySelector(`#illustcontainer>.col>div>img[data-src="${url}"]`)
     let imgCard = imgselect.parentNode.parentNode
-    imgCard.style.width='100%'
+
+    let illustcontainer = document.querySelector(`#illustcontainer`)
+
+    let img_W=imgselect.clientWidth
+    let img_H=imgselect.clientHeight
+    
+    let container_W=illustcontainer.clientWidth
+    let container_H=window.innerHeight-100
+    
+
+    console.log(`${img_W}  ${img_H}  ${container_W}  ${container_H}  `)
+    let scaleRatio = ''
+    if (img_W/img_H >= container_W/container_H) {
+        scaleRatio = '100%'
+    } else {
+        scaleRatio = `${100*parseFloat(((container_H / img_H) * img_W)/container_W )}%`
+    }
+    console.log(scaleRatio)
+    imgCard.style.transition='width 0.5s'
+    imgCard.style.width = `${scaleRatio}`
 }
 
 function downloadButtonClick(url) {
