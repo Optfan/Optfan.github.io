@@ -197,7 +197,11 @@ test_jsonp()
 
 */
 
-
+function amplifyButtonClick(url){
+    let imgselect = document.querySelector(`#illustcontainer>.col>div>img[data-src="${url}"]`)
+    let imgCard = imgselect.parentNode.parentNode
+    imgCard.style.width='100%'
+}
 
 function downloadButtonClick(url) {
 
