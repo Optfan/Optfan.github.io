@@ -196,30 +196,55 @@ test_jsonp()
 
 
 */
-
+var scaleDic = new Array()
 function amplifyButtonClick(url) {
     let imgselect = document.querySelector(`#illustcontainer>.col>div>img[data-src="${url}"]`)
     let imgCard = imgselect.parentNode.parentNode
-
+    let button= imgselect.parentNode.childNodes[1].childNodes[1]
     let illustcontainer = document.querySelector(`#illustcontainer`)
 
     let img_W=imgselect.clientWidth
     let img_H=imgselect.clientHeight
     
     let container_W=illustcontainer.clientWidth
-    let container_H=window.innerHeight-100
+    let container_H=window.innerHeight-132
+
+    let scaleRatio = ''
+
+    if(scaleDic[url]){
+        imgCard.style.width = ``
+        scaleDic[url]=false
+        button.className='btn btn-outline-primary float-end'
+    }
+    else{
+        for(let turl in scaleDic){
+            if(url!=turl){
+                let img=document.querySelector(`#illustcontainer>.col>div>img[data-src="${turl}"]`)
+                img.parentNode.parentNode.style.width = ``
+                img.parentNode.childNodes[1].childNodes[1].className='btn btn-outline-primary float-end'
+            }
+        }
+        if (img_W/img_H >= container_W/container_H||container_W<container_H) {
+            scaleRatio = '100%'
+        } else {
+            scaleRatio = `${100*parseFloat(((container_H / img_H) * img_W)/container_W )}%`
+        }
+        //console.log(scaleRatio)
+        imgCard.style.transition='width 0.5s'
+        imgCard.style.width = `${scaleRatio}`
+        scaleDic[url]=true
+        button.className='btn btn-primary float-end'
+    }
     
 
-    console.log(`${img_W}  ${img_H}  ${container_W}  ${container_H}  `)
-    let scaleRatio = ''
-    if (img_W/img_H >= container_W/container_H) {
-        scaleRatio = '100%'
-    } else {
-        scaleRatio = `${100*parseFloat(((container_H / img_H) * img_W)/container_W )}%`
-    }
-    console.log(scaleRatio)
-    imgCard.style.transition='width 0.5s'
-    imgCard.style.width = `${scaleRatio}`
+    
+    
+    
+    
+
+    //console.log(`${img_W}  ${img_H}  ${container_W}  ${container_H}  `)
+    
+    
 }
 
 function downloadButtonClick(url) {
