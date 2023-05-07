@@ -89,7 +89,7 @@
         
         let idx
         const fetchAPI = async () => {
-            const response = await fetch(`http://frp.cpufan.top:6115/search?url=${idu}`)
+            const response = await fetch(`https://frp.cpufan.top:6115/search?url=${idu}`)
             if (response.status === 200) {
                 const idx = await response.text()
                 idList = idx.split('_')
