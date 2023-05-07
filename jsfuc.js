@@ -31,6 +31,51 @@ function browserTypeAlert() {
         container.prepend(headalert)
     }
 }
+async function lisPICshow() {
+    let io = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            if (entry.intersectionRatio > 0) {
+                let wrap = entry.target;
+                let src = wrap.dataset.src;
+
+                iloader(src).then(data => {
+                    let { blob, base64 } = data
+                    console.log("loaded " + src);
+                    wrap.outerHTML = `<img src='${base64}' class='show' data-src='${src}'>`;
+                    let button = document.querySelector(`#illustcontainer>.col>div>img[data-src="${src}"]+div>button`)
+
+                    if (!deviceType) {
+                        button.disabled = false
+                        button.className = 'btn btn-outline-primary float-end'
+                    }
+
+                });
+                io.unobserve(wrap);
+
+            }
+        });
+
+    });
+
+    document.querySelectorAll('img.lazy[data-src]').forEach(function (img) {
+        let src = img.dataset.src;
+        img.outerHTML = `<div class='lazyImg-wrap' data-src='${src}'>
+        
+        <div class="placeholder-glow" style="height:360px;width:100%">
+            <span>
+                <span class="placeholder col-12" style="height:100%;width:100%"></span>
+
+            </span>
+            <div class="progress">
+                <div class="pixiv-green progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-label="Animated striped example"  aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
+                </div>
+            </div>
+        </div>`;
+    });
+    document.querySelectorAll('.lazyImg-wrap').forEach(function (wrap) {
+        io.observe(wrap);
+    });
+}
 function ListenPICshow() {
     document.addEventListener('DOMContentLoaded', function () {
         let io = new IntersectionObserver(entries => {

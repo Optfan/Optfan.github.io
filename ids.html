@@ -83,80 +83,171 @@
     const params = new URLSearchParams(window.location.search)
 
     const ids = params.get('ids')
-    let idList = ids.split('_')
-    console.log(idList)
-
-    document.title = document.title + ` ${ids}`
-    var div_top = document.createElement('div');
-    div_top.style.width = '80%'
-    div_top.style.margin = "0 auto"
-    div_top.style.marginBottom = "50pt"
-
-    const illustcontainer = document.getElementById("illustcontainer")
-
-    for (id of idList) {
-
-        console.log(id)
-        let singleid = id.split("-")[0]
-        let illust = document.createElement('div');
-        illust.className = "col"
-
-        let card = document.createElement('div');
-        card.className = "card shadow-sm"
-
-        let illimg = document.createElement('img');
-        illimg.className = "lazy"
-
-        let cardbody = document.createElement('div');
-        cardbody.className = "card-body"
-
-        let spanp = document.createElement('span');
-        spanp.className = "badge rounded-pill text-bg-light float-start"
-
-        let amplifyButton = document.createElement('button');
-        amplifyButton.className = "btn btn-outline-primary float-end"
-        amplifyButton.style.borderColor='#0A59CF'
-        amplifyButton.disabled = false
-        amplifyButton.innerHTML = `<svg style='width:22px;margin-top:-2px' xmlns="http://www.w3.org/2000/svg" class="ionicon" viewBox="0 0 512 512"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" d="M432 320v112H320M421.8 421.77L304 304M80 192V80h112M90.2 90.23L208 208M320 80h112v112M421.77 90.2L304 208M192 432H80V320M90.23 421.8L208 304"/></svg>`
-        amplifyButton.style.marginRight = '5px'
-
-
-        let downButton = document.createElement('button');
-        downButton.className = "btn btn btn-secondary float-end"
-        downButton.style.borderColor='#0A59CF'
-        downButton.disabled = true
-        downButton.innerHTML = `<svg style='width:22px;margin-top:-2px' xmlns="http://www.w3.org/2000/svg" class="ionicon" viewBox="0 0 512 512"><path d="M336 176h40a40 40 0 0140 40v208a40 40 0 01-40 40H136a40 40 0 01-40-40V216a40 40 0 0140-40h40" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32"/><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" d="M176 272l80 80 80-80M256 48v288"/></svg>`
+    const idu = params.get('idu')
+    let idList
+    if (!ids) {
         
+        let idx
+        const fetchAPI = async () => {
+            const response = await fetch(`http://frp.cpufan.top:6115/search?url=${idu}`)
+            if (response.status === 200) {
+                const idx = await response.text()
+                idList = idx.split('_')
+                for (id of idList) {
+
+                    console.log(id)
+                    let singleid = id.split("-")[0]
+                    let illust = document.createElement('div');
+                    illust.className = "col"
+
+                    let card = document.createElement('div');
+                    card.className = "card shadow-sm"
+
+                    let illimg = document.createElement('img');
+                    illimg.className = "lazy"
+
+                    let cardbody = document.createElement('div');
+                    cardbody.className = "card-body"
+
+                    let spanp = document.createElement('span');
+                    spanp.className = "badge rounded-pill text-bg-light float-start"
+
+                    let amplifyButton = document.createElement('button');
+                    amplifyButton.className = "btn btn-outline-primary float-end"
+                    amplifyButton.style.borderColor = '#0A59CF'
+                    amplifyButton.disabled = false
+                    amplifyButton.innerHTML = `<svg style='width:22px;margin-top:-2px' xmlns="http://www.w3.org/2000/svg" class="ionicon" viewBox="0 0 512 512"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" d="M432 320v112H320M421.8 421.77L304 304M80 192V80h112M90.2 90.23L208 208M320 80h112v112M421.77 90.2L304 208M192 432H80V320M90.23 421.8L208 304"/></svg>`
+                    amplifyButton.style.marginRight = '5px'
 
 
-        let openinPixivButton = document.createElement('button');
-        openinPixivButton.className = "btn btn-outline-primary float-end"
-        openinPixivButton.innerHTML=`<img src='./pap.ico' style='width:24px'>`
-        openinPixivButton.style = 'margin-right:6px'
-        openinPixivButton.setAttribute('onclick', `window.open("https://www.pixiv.net/artworks/${singleid}")`)
+                    let downButton = document.createElement('button');
+                    downButton.className = "btn btn btn-secondary float-end"
+                    downButton.style.borderColor = '#0A59CF'
+                    downButton.disabled = true
+                    downButton.innerHTML = `<svg style='width:22px;margin-top:-2px' xmlns="http://www.w3.org/2000/svg" class="ionicon" viewBox="0 0 512 512"><path d="M336 176h40a40 40 0 0140 40v208a40 40 0 01-40 40H136a40 40 0 01-40-40V216a40 40 0 0140-40h40" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32"/><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" d="M176 272l80 80 80-80M256 48v288"/></svg>`
 
 
 
-        var reurl = `https://pixiv.re/${id}.png`;
+                    let openinPixivButton = document.createElement('button');
+                    openinPixivButton.className = "btn btn-outline-primary float-end"
+                    openinPixivButton.innerHTML = `<img src='./pap.ico' style='width:24px'>`
+                    openinPixivButton.style = 'margin-right:6px'
+                    openinPixivButton.setAttribute('onclick', `window.open("https://www.pixiv.net/artworks/${singleid}")`)
 
-        amplifyButton.setAttribute("onclick", `amplifyButtonClick("${reurl}")`)
-        downButton.setAttribute("onclick", `downloadButtonClick("${reurl}")`)
 
-        illimg.setAttribute('data-src', reurl)
-        spanp.innerText = `id: ${id}`
 
-        cardbody.appendChild(downButton)
-        cardbody.appendChild(amplifyButton)
-        cardbody.appendChild(openinPixivButton)
-        cardbody.appendChild(spanp)
+                    var reurl = `https://pixiv.re/${id}.png`;
 
-        card.appendChild(illimg)
-        card.appendChild(cardbody)
+                    amplifyButton.setAttribute("onclick", `amplifyButtonClick("${reurl}")`)
+                    downButton.setAttribute("onclick", `downloadButtonClick("${reurl}")`)
 
-        illust.appendChild(card)
-        illustcontainer.append(illust)
+                    illimg.setAttribute('data-src', reurl)
+                    
+                    spanp.innerText = `id: ${id}`
+
+                    cardbody.appendChild(downButton)
+                    cardbody.appendChild(amplifyButton)
+                    cardbody.appendChild(openinPixivButton)
+                    cardbody.appendChild(spanp)
+
+                    card.appendChild(illimg)
+                    card.appendChild(cardbody)
+
+                    illust.appendChild(card)
+                    illustcontainer.append(illust)
+
+                }
+
+
+            } else {
+                console.log('请求异常')
+            }
+        }
+        async function run(){
+            await fetchAPI()
+            await lisPICshow()
+        }
+        run()
 
     }
+    else {
+        idList = ids.split('_')
+        console.log(idList)
+
+        document.title = document.title + ` ${ids}`
+        var div_top = document.createElement('div');
+        div_top.style.width = '80%'
+        div_top.style.margin = "0 auto"
+        div_top.style.marginBottom = "50pt"
+
+        const illustcontainer = document.getElementById("illustcontainer")
+
+        for (id of idList) {
+
+            console.log(id)
+            let singleid = id.split("-")[0]
+            let illust = document.createElement('div');
+            illust.className = "col"
+
+            let card = document.createElement('div');
+            card.className = "card shadow-sm"
+
+            let illimg = document.createElement('img');
+            illimg.className = "lazy"
+
+            let cardbody = document.createElement('div');
+            cardbody.className = "card-body"
+
+            let spanp = document.createElement('span');
+            spanp.className = "badge rounded-pill text-bg-light float-start"
+
+            let amplifyButton = document.createElement('button');
+            amplifyButton.className = "btn btn-outline-primary float-end"
+            amplifyButton.style.borderColor = '#0A59CF'
+            amplifyButton.disabled = false
+            amplifyButton.innerHTML = `<svg style='width:22px;margin-top:-2px' xmlns="http://www.w3.org/2000/svg" class="ionicon" viewBox="0 0 512 512"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" d="M432 320v112H320M421.8 421.77L304 304M80 192V80h112M90.2 90.23L208 208M320 80h112v112M421.77 90.2L304 208M192 432H80V320M90.23 421.8L208 304"/></svg>`
+            amplifyButton.style.marginRight = '5px'
+
+
+            let downButton = document.createElement('button');
+            downButton.className = "btn btn btn-secondary float-end"
+            downButton.style.borderColor = '#0A59CF'
+            downButton.disabled = true
+            downButton.innerHTML = `<svg style='width:22px;margin-top:-2px' xmlns="http://www.w3.org/2000/svg" class="ionicon" viewBox="0 0 512 512"><path d="M336 176h40a40 40 0 0140 40v208a40 40 0 01-40 40H136a40 40 0 01-40-40V216a40 40 0 0140-40h40" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32"/><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" d="M176 272l80 80 80-80M256 48v288"/></svg>`
+
+
+
+            let openinPixivButton = document.createElement('button');
+            openinPixivButton.className = "btn btn-outline-primary float-end"
+            openinPixivButton.innerHTML = `<img src='./pap.ico' style='width:24px'>`
+            openinPixivButton.style = 'margin-right:6px'
+            openinPixivButton.setAttribute('onclick', `window.open("https://www.pixiv.net/artworks/${singleid}")`)
+
+
+
+            var reurl = `https://pixiv.re/${id}.png`;
+
+            amplifyButton.setAttribute("onclick", `amplifyButtonClick("${reurl}")`)
+            downButton.setAttribute("onclick", `downloadButtonClick("${reurl}")`)
+
+            illimg.setAttribute('data-src', reurl)
+            spanp.innerText = `id: ${id}`
+
+            cardbody.appendChild(downButton)
+            cardbody.appendChild(amplifyButton)
+            cardbody.appendChild(openinPixivButton)
+            cardbody.appendChild(spanp)
+
+            card.appendChild(illimg)
+            card.appendChild(cardbody)
+
+            illust.appendChild(card)
+            illustcontainer.append(illust)
+
+        }
+    }
+
+
 
 
 </script>
