@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pixiv artwork:</title>
+
+    <link href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/5.2.3/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/5.2.3/js/bootstrap.bundle.min.js"></script>
+    <link rel="shortcut icon" href="./pap.ico">
+    <script src="./jsfuc.js"></script>
+    <link href="./style.css" rel="stylesheet">
+</head>
+
+
+<body>
+
+    <header>
+        <nav class="navbar navbar-light bg-light fixed-top">
+            <div class="container-fluid">
+
+                <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas"
+                    data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <a id="id_header" class="navbar-brand" href="#">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="116" height="26" viewBox="0 0 116 46">
+                        <path fill="#81FA00"
+                            d="M33.463 15.125c-2.963-2.588-7.113-4.08-11.936-4.08-12.57 0-21.12 9.694-21.12 9.694l2.41 3.82s1.332.11.626-2.14c.61-1.15 1.802-2.7 4.13-4.487V43.39c-1.003.283-2.33.816-1.425 1.72h6.92c.915-.913-.525-1.462-1.402-1.72v-6.004s4.746 1.86 9.86 1.86c4.496 0 8.585-1.336 11.627-3.75 3.042-2.4 5.002-5.983 4.99-10.08a13.504 13.504 0 00-4.68-10.29zm-3.668 18.363c-2.103 2.075-5.162 3.388-8.69 3.385-3.937.002-7.25-.76-9.438-1.836v-19.1c2.4-1.704 6.294-2.754 9.438-2.748 3.82 0 6.82 1.443 8.848 3.632 2.025 2.203 3.13 5.128 3.14 8.53-.013 3.313-1.195 6.042-3.298 8.135zm14.47-22.444h-1.41c-.625 0-1.132.507-1.132 1.133v26.035c0 .626.507 1.134 1.133 1.134h1.41c.624 0 1.133-.508 1.133-1.134V12.177a1.137 1.137 0 00-1.136-1.133zm36.84 0h-1.41c-.626 0-1.133.507-1.133 1.133v26.035c0 .626.507 1.134 1.133 1.134h1.41c.624 0 1.132-.508 1.132-1.134V12.177c0-.626-.508-1.133-1.133-1.133zm33.14 0h-1.312c-1.03 0-1.315.133-1.78 1.063-.462.925-10.67 21.154-10.67 21.154S90.275 13.034 89.813 12.11c-.463-.93-.747-1.063-1.778-1.063h-1.31c-.967 0-1.487.43-.944 1.52.547 1.093 13.12 25.772 13.12 25.772.33.625.933 1.01 1.586 1.01.65 0 1.255-.385 1.587-1.01.02-.045 12.57-24.68 13.113-25.77.544-1.093.025-1.522-.94-1.522zM69.972 38.398c.53.68.914.947 1.944.947h2.113c1.33 0 .86-.605.485-1.102-.94-1.238-10.204-13.016-10.204-13.016s9.6-11.847 10.54-13.085c.376-.495.844-1.1-.487-1.1h-2.11c-1.032 0-1.415.267-1.946.946-.532.678-8.332 10.268-8.332 10.268s-7.806-9.59-8.338-10.268c-.532-.68-.915-.946-1.944-.946H49.58c-1.33 0-.862.604-.486 1.1.94 1.24 10.543 13.085 10.543 13.085s-9.543 11.777-10.484 13.016c-.375.496-.844 1.102.486 1.102h2.11c1.03 0 1.414-.27 1.946-.947.532-.678 8.277-10.202 8.277-10.202l8 10.202zM43.556.11c-.84 0-1.54.282-2.1.84-.56.56-.84 1.26-.84 2.102 0 .84.28 1.54.84 2.1.56.56 1.26.84 2.1.84.84 0 1.54-.28 2.1-.84.56-.56.84-1.26.84-2.1 0-.84-.28-1.54-.84-2.1-.56-.56-1.26-.84-2.1-.84zm36.84 0c-.84 0-1.54.282-2.1.84-.562.56-.84 1.26-.84 2.102 0 .84.278 1.54.84 2.1.56.56 1.26.84 2.1.84.84 0 1.54-.28 2.1-.84s.84-1.26.84-2.1c0-.84-.278-1.54-.84-2.1-.56-.56-1.26-.84-2.1-.84z" />
+                    </svg>
+                </a>
+                <button id="navbar_topixiv" type="button" class="btn btn-outline-primary" style="margin-right:5px;"
+                    onclick="openinPixivButtonClick()">在pixiv.net打开</button>
+
+                <div class="offcanvas offcanvas-start text-bg-light" tabindex="-1" id="offcanvasNavbar"
+                    aria-labelledby="offcanvasLightNavbarLabel">
+                    <div class="offcanvas-header">
+                        <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Pixiv artwork</h5>
+                        <button type="button" class="btn-close btn-close-black" data-bs-dismiss="offcanvas"
+                            aria-label="Close"></button>
+                    </div>
+                    <div class="offcanvas-body">
+                        <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="#">无后端Pixiv插画展示</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="https://afdian.net/a/cpuBot">好活当赏
+                                    <img src="./imgs/afd.png" style="width:100%"></a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="https://github.com/Optfan/Optfan.github.io">view in Github</a>
+                            </li>
+
+                        </ul>
+
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+
+    <div class="container">
+        <div id="alert" style="margin-top:10px">
+
+        </div>
+        <div id="" style="margin-top:20px"></div>
+        <div id="illustcontainer" class="row row-cols-1 row-cols-sm-1 row-cols-md-2 row-cols-xl-3 row-cols-xxl-4 g-3">
+
+
+
+
+        </div>
+    </div>
+
+</body>
+<script>
+    ListenPICshow()
+
+    browserTypeAlert()
+    let container = document.querySelector('.container')
+    let headalert = document.createElement("div");
+    headalert.id = 'alert'
+    headalert.style = 'margin-top:10px'
+    headalert.className = 'alert alert-warning'
+    headalert.setAttribute('role', 'alert')
+    headalert.innerText = `请使用 右键-另存为 方式下载图片`
+    container.prepend(headalert)
+    const params = new URLSearchParams(window.location.search)
+
+    const pid = params.get('id')
+    const total = params.get('total')
+    const times = params.get('times').split('-').join('/')
+
+    console.log(times)
+    function openinPixivButtonClick() {
+        window.open(`https://www.pixiv.net/artworks/${pid}`)
+
+    }
+
+    document.title = document.title + ` ${pid}`
+    var div_top = document.createElement('div');
+    div_top.style.width = '80%'
+    div_top.style.margin = "0 auto"
+    div_top.style.marginBottom = "50pt"
+
+
+
+
+
+    var nums = [1, total]
+
+    let dlinkli = []
+
+
+
+    function amplifyButtonURL(url) {
+
+        console.log('cli')
+        let imgselect = document.querySelector(`#illustcontainer>.col>div>img[src="${url}"]`)
+        let imgCard = imgselect.parentNode.parentNode
+        let button = imgselect.parentNode.childNodes[1].childNodes[1]
+        let illustcontainer = document.querySelector(`#illustcontainer`)
+
+        let img_W = imgselect.clientWidth
+        let img_H = imgselect.clientHeight
+
+        let container_W = illustcontainer.clientWidth
+        let container_H = window.innerHeight - 132
+
+        let scaleRatio = ''
+
+        if (scaleDic[url]) {
+            console.log('取消放大')
+            imgCard.style.width = ``
+            scaleDic[url] = false
+            button.className = 'btn btn-outline-primary float-end'
+        }
+        else {
+            for (let turl in scaleDic) {
+                if (url != turl) {
+                    let img = document.querySelector(`#illustcontainer>.col>div>img[src="${turl}"]`)
+                    img.parentNode.parentNode.style.width = ``
+                    img.parentNode.childNodes[1].childNodes[1].className = 'btn btn-outline-primary float-end'
+                    scaleDic[turl] = false
+                }
+            }
+            if (img_W / img_H >= container_W / container_H || container_W < container_H) {
+                scaleRatio = '100%'
+            } else {
+                scaleRatio = `${100 * parseFloat(((container_H / img_H) * img_W) / container_W)}%`
+            }
+            //console.log(scaleRatio)
+            imgCard.style.transition = 'width 0.5s'
+            imgCard.style.width = `${scaleRatio}`
+            scaleDic[url] = true
+            button.className = 'btn btn-primary float-end'
+        }
+
+
+
+
+
+
+
+        //console.log(`${img_W}  ${img_H}  ${container_W}  ${container_H}  `)
+
+
+
+    }
+
+
+    const illustcontainer = document.getElementById("illustcontainer")
+
+    for (var i = nums[0]; i <= nums[1]; i++) {
+
+        var reurl = `https://i.pixiv.re/img-original/img/${times}/${pid}_p${i - 1}.jpg`;
+
+        let illust = document.createElement('div');
+        illust.className = "col"
+
+        let card = document.createElement('div');
+        card.className = "card shadow-sm"
+
+        let illimg = document.createElement('img');
+        illimg.className = "lazy"
+
+        let cardbody = document.createElement('div');
+        cardbody.className = "card-body"
+        cardbody.style = "margin-top:2px"
+        let spanp = document.createElement('span');
+        spanp.className = "badge rounded-pill text-bg-light float-start"
+
+        let amplifyButton = document.createElement('button');
+        amplifyButton.className = "btn btn-outline-primary float-end"
+        amplifyButton.style.borderColor = '#0A59CF'
+        amplifyButton.disabled = true
+        amplifyButton.innerHTML = `<svg style='width:22px;margin-top:-2px' xmlns="http://www.w3.org/2000/svg" class="ionicon" viewBox="0 0 512 512"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" d="M432 320v112H320M421.8 421.77L304 304M80 192V80h112M90.2 90.23L208 208M320 80h112v112M421.77 90.2L304 208M192 432H80V320M90.23 421.8L208 304"/></svg>`
+        amplifyButton.style.marginRight = '5px'
+
+
+        let downButton = document.createElement('button');
+        downButton.className = "btn btn btn-secondary float-end"
+        downButton.style.borderColor = '#0A59CF'
+        downButton.disabled = false
+        downButton.setAttribute("onclick", `downloadButtonUrl("${reurl}")`)
+        downButton.innerHTML = `<svg style='width:22px;margin-top:-2px' xmlns="http://www.w3.org/2000/svg" class="ionicon" viewBox="0 0 512 512"><path d="M336 176h40a40 40 0 0140 40v208a40 40 0 01-40 40H136a40 40 0 01-40-40V216a40 40 0 0140-40h40" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32"/><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" d="M176 272l80 80 80-80M256 48v288"/></svg>`
+
+
+
+
+
+
+
+
+        amplifyButton.setAttribute("onclick", `amplifyButtonURL("${reurl}")`)
+        // downButton.setAttribute("onclick", `downloadButtonClick("${reurl}")`)
+        illimg.setAttribute('src', reurl)
+        spanp.innerText = `p${i - 1}`
+
+
+        cardbody.appendChild(downButton)
+        cardbody.appendChild(amplifyButton)
+        cardbody.appendChild(spanp)
+
+        card.appendChild(illimg)
+        card.appendChild(cardbody)
+
+        illust.appendChild(card)
+        illustcontainer.append(illust)
+    }
+
+
+</script>
+
+
+</html>
