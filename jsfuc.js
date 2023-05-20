@@ -56,7 +56,7 @@ async function lisPICshow() {
         });
 
     });
-
+    // placeholder 
     document.querySelectorAll('img.lazy[data-src]').forEach(function (img) {
         let src = img.dataset.src;
         img.outerHTML = `<div class='lazyImg-wrap' data-src='${src}'>
