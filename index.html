@@ -81,7 +81,7 @@
 </body>
 <script>
     ListenPICshow()
-
+    
     browserTypeAlert()
 
     const params = new URLSearchParams(window.location.search)
@@ -89,6 +89,11 @@
     const pid = params.get('artwork')
     const total = params.get('total')
     const limit = params.get('limit')
+
+    if(isQQAPP()!="Android QQ"&&pid!=null&&total!=null&&limit!=null){
+        
+        window.location.href=`${window.location.origin}/dist/?artwork=${pid}&total=${total}&limit=${limit}`;
+    }
 
     function openinPixivButtonClick() {
         window.open(`https://www.pixiv.net/artworks/${pid}`)
