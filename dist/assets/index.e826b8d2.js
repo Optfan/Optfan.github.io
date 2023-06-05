@@ -12971,7 +12971,7 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
   setup(__props) {
     function isQQAPP() {
       var isIosQQ = /(iPhone|iPad|iPod|iOS)/i.test(navigator.userAgent) && /\sQQ/i.test(navigator.userAgent);
-      var isAndroidQQ = /(Android)/i.test(navigator.userAgent) && /MQQBrowser/i.test(navigator.userAgent) && navigator.userAgent.split("MQQBrowser").forEach(/\sQQ/i.test);
+      var isAndroidQQ = /(Android)/i.test(navigator.userAgent) && /MQQBrowser/i.test(navigator.userAgent);
       console.log("isIosQQ:" + isIosQQ + "--isAndroidQQ:" + isAndroidQQ);
       if (isIosQQ) {
         return "IOS QQ";
