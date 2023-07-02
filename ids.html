@@ -92,6 +92,7 @@
             const response = await fetch(`https://frp.cpufan.top:6115/search?url=${idu}`)
             if (response.status === 200) {
                 const idx = await response.text()
+                window.location=`http://localhost/#/batch/?${idx}`
                 idList = idx.split('_')
                 for (id of idList) {
 
