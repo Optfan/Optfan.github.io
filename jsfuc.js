@@ -172,7 +172,7 @@ function iloader(imgUrl) {
                     console.log("301失败")
                     this.abort()
                     let rexhr = new XMLHttpRequest();
-                    rexhr.open("get", `https://pixiv.re/${id}-1.png`, true);
+                    rexhr.open("get", `https://pixiv.cat/${id}-1.png`, true);
                     rexhr.responseType = "blob";
                     rexhr.addEventListener("progress", updateProgress);
                     rexhr.onload = function () {
