@@ -1,4 +1,4 @@
-import{d as et,c as G,r as tt,B as nt,h as N,D as rt}from"./index-SH62CTEf.js";import{e as st,j as he,f as B,h as me,u as ot,a as Pe,k as it,_ as at,c as ct}from"./light-D_Cq_XeU.js";import{f as lt,u as ut,c as ft}from"./fade-in.cssr-DLCZeExR.js";const dt=e=>{const{opacityDisabled:t,heightTiny:n,heightSmall:r,heightMedium:s,heightLarge:o,heightHuge:i,primaryColor:c,fontSize:u}=e;return{fontSize:u,textColor:c,sizeTiny:n,sizeSmall:r,sizeMedium:s,sizeLarge:o,sizeHuge:i,color:c,opacitySpinning:t}},pt={name:"Spin",common:st,self:dt},ht=he([he("@keyframes spin-rotate",`
+import{d as et,c as G,r as tt,B as nt,h as N,D as rt}from"./index-Bw1ld_LV.js";import{e as st,j as he,f as B,h as me,u as ot,a as Pe,k as it,_ as at,c as ct}from"./light-B6RHASOy.js";import{f as lt,u as ut,c as ft}from"./fade-in.cssr-B8YwGxJp.js";const dt=e=>{const{opacityDisabled:t,heightTiny:n,heightSmall:r,heightMedium:s,heightLarge:o,heightHuge:i,primaryColor:c,fontSize:u}=e;return{fontSize:u,textColor:c,sizeTiny:n,sizeSmall:r,sizeMedium:s,sizeLarge:o,sizeHuge:i,color:c,opacitySpinning:t}},pt={name:"Spin",common:st,self:dt},ht=he([he("@keyframes spin-rotate",`
  from {
  transform: rotate(0);
  }
